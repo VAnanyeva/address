@@ -1,0 +1,37 @@
+package controllers;
+
+import model.Address;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Controller
+@RequestMapping("/address")
+public class AddressController {
+    List<Address> adresses = new ArrayList<Address>();
+
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
+    public void getAddress() {
+        System.out.println("getAddress");
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    public void setAddress(@RequestBody String address) {
+        System.out.println(address);
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public String delAddress(@RequestBody String address) {
+
+        return "del"+address;
+
+    }
+}
